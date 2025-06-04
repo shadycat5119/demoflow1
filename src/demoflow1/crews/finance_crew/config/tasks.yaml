@@ -1,0 +1,23 @@
+finance_search:
+  description: >
+    Search for relevant financial information and market data.
+    Focus on finding information that matches the specified criteria.
+  expected_output: >
+    A list of relevant financial information with basic details.
+  agent: finance_searcher
+
+finance_scrape:
+  description: >
+    Extract detailed financial information and market data.
+    Gather comprehensive data including market trends, financial metrics, and other relevant details.
+  expected_output: >
+    Detailed financial information in a structured format.
+  agent: finance_scraper
+
+finance_compile:
+  description: >
+    Compile all gathered financial information into a comprehensive report.
+    Organize the information in a clear and actionable format.
+  expected_output: >
+    A well-organized financial report containing all relevant information.
+  agent: finance_compiler

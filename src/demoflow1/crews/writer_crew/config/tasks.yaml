@@ -1,0 +1,15 @@
+format_content:
+  description: >
+    Format the provided content according to specified requirements.
+    Ensure proper structure, consistency, and professional appearance.
+  expected_output: >
+    Well-formatted content that follows the specified guidelines and standards.
+  agent: formatter
+
+write_file:
+  description: >
+    Write the formatted content to appropriate files.
+    Ensure proper file structure and organization.
+  expected_output: >
+    Files containing the formatted content with proper structure and organization.
+  agent: file_writer

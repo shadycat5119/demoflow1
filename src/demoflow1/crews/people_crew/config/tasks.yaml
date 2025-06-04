@@ -1,0 +1,23 @@
+people_search:
+  description: >
+    Search for relevant information about people.
+    Focus on finding information that matches the specified criteria.
+  expected_output: >
+    A list of relevant people with basic information about each person.
+  agent: people_searcher
+
+people_scrape:
+  description: >
+    Extract detailed information about the identified people.
+    Gather comprehensive data including background, experience, and other relevant details.
+  expected_output: >
+    Detailed information about each person in a structured format.
+  agent: people_scraper
+
+people_compile:
+  description: >
+    Compile all gathered people information into comprehensive profiles.
+    Organize the information in a clear and useful format.
+  expected_output: >
+    Well-organized profiles containing all relevant information about each person.
+  agent: people_compiler

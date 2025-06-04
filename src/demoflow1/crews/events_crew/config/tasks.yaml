@@ -1,0 +1,23 @@
+events_search:
+  description: >
+    Search for relevant events and gather preliminary information about them.
+    Focus on finding events that match the specified criteria.
+  expected_output: >
+    A list of relevant events with basic information about each event.
+  agent: events_searcher
+
+events_scrape:
+  description: >
+    Extract detailed information about the identified events.
+    Gather comprehensive data including dates, locations, and other relevant details.
+  expected_output: >
+    Detailed information about each event in a structured format.
+  agent: events_scraper
+
+events_compile:
+  description: >
+    Compile all gathered event information into a comprehensive report.
+    Organize the information in a clear and useful format.
+  expected_output: >
+    A well-organized report containing all relevant event information.
+  agent: events_compiler

@@ -2,7 +2,9 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List, Optional
-from langchain_google_genai import ChatGoogleGenerativeAI
+from litellm import completion
+from crewai_tools import SerperDevTool, ScrapeWebsiteTool
+import os
 
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -25,39 +27,41 @@ class PeopleCrew:
     # If you would lik to add tools to your crew, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
 
-    def __init__(self, gemini_api_key: str, gemini_model: str = "gemini-2.0-flash"):
+    def __init__(self, gemini_api_key: str, gemini_model: str = "gemini/gemini-2.0-flash"):
         """Initialize the People Crew with custom Gemini configuration.
         
         Args:
             gemini_api_key (str): The Gemini API key to use for this crew
-            gemini_model (str, optional): The Gemini model to use. Defaults to "gemini-2.0-flash".
+            gemini_model (str, optional): The Gemini model to use. Defaults to "gemini/gemini-2.0-flash".
         """
         self.gemini_api_key = gemini_api_key
         self.gemini_model = gemini_model
-        self.llm = ChatGoogleGenerativeAI(
-            model=self.gemini_model,
-            google_api_key=self.gemini_api_key
-        )
+        os.environ["GEMINI_API_KEY"] = self.gemini_api_key
 
     @agent
     def people_searcher(self) -> Agent:
         return Agent(
-            config=self.agents_config["people_searcher"],  # type: ignore[index]
-            llm=self.llm
+            config=self.agents_config["people_searcher"],
+            llm=lambda x: completion(model=self.gemini_model, messages=[{"role": "user", "content": x}]),
+            tools=[SerperDevTool()],
+            verbose=True
         )
 
     @agent
     def people_scraper(self) -> Agent:
         return Agent(
-            config=self.agents_config["people_scraper"],  # type: ignore[index]
-            llm=self.llm
+            config=self.agents_config["people_scraper"],
+            llm=lambda x: completion(model=self.gemini_model, messages=[{"role": "user", "content": x}]),
+            tools=[ScrapeWebsiteTool()],
+            verbose=True
         )
 
     @agent
     def people_compiler(self) -> Agent:
         return Agent(
-            config=self.agents_config["people_compiler"],  # type: ignore[index]
-            llm=self.llm
+            config=self.agents_config["people_compiler"],
+            llm=lambda x: completion(model=self.gemini_model, messages=[{"role": "user", "content": x}]),
+            verbose=True
         )
 
     # To learn more about structured task outputs,

@@ -1,23 +1,40 @@
 finance_search:
   description: >
-    Search for relevant financial information and market data.
-    Focus on finding information that matches the specified criteria.
+    Research and identify the top 20 most reliable financial websites and sources containing information about the target company.
+    Focus on financial news sites, stock market data providers, company filings, and financial analysis platforms.
+    Prioritize sources with verified financial data and regular updates.
   expected_output: >
-    A list of relevant financial information with basic details.
+    A ranked list of top 20 financial information sources, including:
+    - Website URL and name
+    - Type of source (financial news, market data, SEC filings, etc.)
+    - Data quality rating
+    - Financial metrics covered
+    - Update frequency
   agent: finance_searcher
 
 finance_scrape:
   description: >
-    Extract detailed financial information and market data.
-    Gather comprehensive data including market trends, financial metrics, and other relevant details.
+    Carefully extract financial information from the top 20 identified sources.
+    Focus on key financial metrics, market data, and company performance indicators.
+    Respect website terms of service and avoid deep scraping.
   expected_output: >
-    Detailed financial information in a structured format.
+    Structured financial data from each source including:
+    - Key financial metrics
+    - Market performance data
+    - Recent financial statements
+    - Analyst ratings and forecasts
+    - Source URL and timestamp
   agent: finance_scraper
 
 finance_compile:
   description: >
-    Compile all gathered financial information into a comprehensive report.
-    Organize the information in a clear and actionable format.
+    Compile and cross-reference financial data from all sources.
+    Verify consistency and accuracy of financial metrics.
+    Organize data by financial category and time period.
   expected_output: >
-    A well-organized financial report containing all relevant information.
+    A verified financial analysis report containing:
+    - Cross-referenced financial metrics
+    - Performance trends and analysis
+    - Market position data
+    - Source citations and confidence levels
   agent: finance_compiler

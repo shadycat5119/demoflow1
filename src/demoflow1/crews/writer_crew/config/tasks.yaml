@@ -1,15 +1,26 @@
 format_content:
   description: >
-    Format the provided content according to specified requirements.
-    Ensure proper structure, consistency, and professional appearance.
+    Compile and format all verified company information into a comprehensive report.
+    Use the cross-referenced data from all crews to create a cohesive narrative.
+    Include source citations and confidence levels for all information.
   expected_output: >
-    Well-formatted content that follows the specified guidelines and standards.
+    A comprehensive company report containing:
+    - Executive summary with key findings
+    - Financial analysis with verified metrics
+    - Executive profiles with cross-referenced data
+    - Recent events timeline with impact analysis
+    - Source citations and confidence levels
   agent: formatter
 
 write_file:
   description: >
-    Write the formatted content to appropriate files.
-    Ensure proper file structure and organization.
+    Write the final report to a markdown file with proper formatting and structure.
+    Include a bibliography of all sources used.
+    Ensure all sections are properly organized and formatted.
   expected_output: >
-    Files containing the formatted content with proper structure and organization.
+    A well-formatted markdown file (lastreport.md) containing:
+    - Complete company report
+    - Source bibliography
+    - Confidence level indicators
+    - Last updated timestamp
   agent: file_writer
